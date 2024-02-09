@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fmt"
+	//"fmt"
 	"gocrud/model"
 
 	log "github.com/sirupsen/logrus"
@@ -10,10 +10,11 @@ import (
 	"gorm.io/gorm"
 )
 
+//var DB = "root:root@tcp(127.0.0.1:3306)/GOCRUD?charset=utf8mb4&parseTime=True&loc=Local"
 var DB *gorm.DB
 
 func ConnectDB() {
-	connectionString := fmt.Sprintf("%v:%v@/%v?parseTime=true&loc=Asia%vJakarta", ENV.DB_USERNAME, ENV.DB_PASSWORD, ENV.DB_DATABASE, "%2F")
+	connectionString := "root:root@tcp(127.0.0.1:3307)/GOCRUD?charset=utf8mb4&parseTime=True&loc=Local"
 
 	db, err := gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {

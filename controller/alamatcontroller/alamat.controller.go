@@ -6,7 +6,6 @@ import (
 	"gocrud/config"
 	"gocrud/helper"
 
-	// "gocrud/helper"
 	"gocrud/model"
 	"net/http"
 	"strconv"
@@ -135,5 +134,4 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	helper.Response(w, 200, "Success delete alamat", nil)
-	return
 }

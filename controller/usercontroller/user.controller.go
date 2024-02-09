@@ -13,26 +13,26 @@ import (
 	"gorm.io/gorm"
 )
 
-// func Index(w http.ResponseWriter, r *http.Request) {
-// 	var users []model.User
-
-// 	if err := config.DB.Where("is_deleted = 0").Find(&users).Error; err != nil{
-// 		helper.Response(w, 500, err.Error(), nil)
-// 	}
-
-// 	helper.Response(w, 200, "List User", users)
-// }
-
 func Index(w http.ResponseWriter, r *http.Request) {
 	var users []model.User
-	var userResponse []model.UserResponse
 
-	if err := config.DB.Joins("Alamat").Where("is_deleted = 0").Find(&users).Find(&userResponse).Error; err != nil {
+	if err := config.DB.Where("is_deleted = 0").Find(&users).Error; err != nil{
 		helper.Response(w, 500, err.Error(), nil)
-		return
 	}
-	helper.Response(w, 200, "List alamat", userResponse)
+
+	helper.Response(w, 200, "List User", users)
 }
+
+// func Index(w http.ResponseWriter, r *http.Request) {
+// 	var users []model.User
+// 	var userResponse []model.UserResponse
+
+// 	if err := config.DB.Joins("Alamat").Where("is_deleted = 0").Find(&users).Find(&userResponse).Error; err != nil {
+// 		helper.Response(w, 500, err.Error(), nil)
+// 		return
+// 	}
+// 	helper.Response(w, 200, "List alamat", userResponse)
+// }
 
 func Create(w http.ResponseWriter, r *http.Request) {
 	var user model.User
@@ -47,7 +47,6 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	helper.Response(w, 200, "Success create user", nil)
-	return
 }
 
 func Detail(w http.ResponseWriter, r *http.Request) {
@@ -65,7 +64,6 @@ func Detail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	helper.Response(w, 200, "User", user)
-	return
 }
 
 func Update(w http.ResponseWriter, r *http.Request) {
@@ -114,5 +112,4 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	helper.Response(w, 200, "Success delete user", nil)
-	return
 }

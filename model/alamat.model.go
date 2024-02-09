@@ -11,6 +11,7 @@ type Alamat struct {
 	User 	User `gorm:"foreignKey:UserID" json:"user"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
+	IsDeleted uint      `json:"isDeleted"` 
 }
 
 type AlamatResponse struct {
@@ -21,4 +22,5 @@ type AlamatResponse struct {
 	User 	UserResponse `gorm:"foreignKey:UserID" json:"user"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
+	IsDeleted uint      `json:"isDeleted"` 
 }
